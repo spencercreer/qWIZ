@@ -1,6 +1,8 @@
 
 // Declare Variables
-var startButton = document.getElementById("startBtn");
+var multiplyButton = document.getElementById("multiplyBtn");
+var divisionButton = document.getElementById("divisionBtn");
+var quizType;
 var submitButton = document.getElementById("submitBtn");
 var homePage = document.getElementById("index");
 var quizPage = document.getElementById("quiz");
@@ -19,7 +21,7 @@ var questionText = document.querySelector(".question");
 
 var scoreCounter = document.querySelector(".score");
 var finalScore = document.querySelector(".finalScore");
-var userAnswer, answer;
+var userAnswer, answer, ans;
 var totScore = 0;
 
 var result = document.querySelector(".result");
@@ -28,6 +30,7 @@ var scoreAlert = document.querySelector(".score-alert")
 
 // On Start Quiz button click, hide homePage and show quizPage
 function startQuiz(){
+    quizType = this.value;
     homePage.hidden = true;
     quizPage.hidden = false;
     quizTime();
@@ -40,10 +43,12 @@ function quizTime() {
          secondsLeft--;
          timeEl.textContent = secondsLeft;
 
+        //  Change timer to red when < 15 seconds remaining
          if (secondsLeft <= 15){
              document.getElementById("timer").className = "text-center text-danger";
          }
  
+        //  Time is up
          if(secondsLeft <= 0) {
              secondsLeft = 0;
              timeEl.textContent = secondsLeft;
@@ -56,26 +61,31 @@ function quizTime() {
         }, 1000);
 }
 
-// getQuestion function gets a question and prints it to screen
+// gets a question and prints it to screen
  function getQuestion(){
     document.getElementById("answer-input").focus();
     answerBtn.className = "btn btn-danger";
     document.getElementById("answer-input").value = " ";
-    x = Math.ceil(Math.random()*9);
-    y = Math.ceil(Math.random()*9);
-    answer = x * y;
-    questionText.textContent = `${x} x ${y} = `;
+    if(quizType == "multiply"){
+        x = Math.ceil(Math.random()*8+1);
+        y = Math.ceil(Math.random()*8+1);
+        answer = x * y;
+        questionText.textContent = `${x} x ${y} = `;
+    } else if(quizType == "division"){
+        x = Math.ceil(Math.random()*89+10);
+        y = Math.ceil(Math.random()*8+1);
+        ans = x / y;
+        answer = ans.toFixed(2)
+        questionText.textContent = `${x} / ${y} = `;
+    }
  }
 
  function ansCheck(){
-    playerAnswer = document.getElementById("answer-input").value;
+    playerAnswer = parseFloat(document.getElementById("answer-input").value);
     if(playerAnswer == answer){
         totScore++;
         scoreCounter.textContent = totScore;
-        setTimeout(function() { 
-            answerBtn.className = "btn btn-success"
-            getQuestion();
-        }, 300);
+        getQuestion();
     } else{
         scoreCounter.textContent = totScore;
         secondsLeft = secondsLeft - 10;
@@ -126,4 +136,5 @@ function quizTime() {
 
 answerBtn.onclick = ansCheck;
 submitButton.onclick = scoreSubmit;
-startButton.onclick = startQuiz;
+multiplyButton.onclick = startQuiz;
+divisionButton.onclick = startQuiz
