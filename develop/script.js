@@ -2,9 +2,13 @@
 // Declare Variables
 var multiplyButton = document.getElementById("multiplyBtn");
 var divisionButton = document.getElementById("divisionBtn");
-var quizType;
+var easyButton = document.getElementById("easyBtn");
+var mediumButton = document.getElementById("mediumBtn");
+var hardButton = document.getElementById("hardBtn");
+var quizType, quizDifficulty;
 var submitButton = document.getElementById("submitBtn");
 var homePage = document.getElementById("index");
+var difficultyPage = document.getElementById("difficulty");
 var quizPage = document.getElementById("quiz");
 var initialsPage = document.getElementById("initialsPg");
 
@@ -26,12 +30,22 @@ var totScore = 0;
 
 var result = document.querySelector(".result");
 var resultEl = document.getElementById("result");
-var scoreAlert = document.querySelector(".score-alert")
+var scoreAlert = document.querySelector(".score-alert");
+
+// Load quiz difficulty page
+function quizDifficultyPage(){
+    quizType = this.value;
+    homePage.hidden = true;
+    difficultyPage.hidden = false;
+    quizPage.hidden = true;
+}
 
 // On Start Quiz button click, hide homePage and show quizPage
 function startQuiz(){
-    quizType = this.value;
+    quizDifficulty = this.value;
+    console.log(quizDifficulty)
     homePage.hidden = true;
+    difficultyPage.hidden = true;
     quizPage.hidden = false;
     quizTime();
     getQuestion();
@@ -67,13 +81,31 @@ function quizTime() {
     answerBtn.className = "btn btn-danger";
     document.getElementById("answer-input").value = " ";
     if(quizType == "multiply"){
-        x = Math.ceil(Math.random()*8+1);
-        y = Math.ceil(Math.random()*8+1);
+        // multiplication question
+        if(quizDifficulty == "easy"){
+            x = Math.ceil(Math.random()*8+1);
+            y = Math.ceil(Math.random()*8+1);
+        } else if(quizDifficulty == "medium"){
+            x = Math.ceil(Math.random()*8);
+            y = Math.ceil(Math.random()*99);
+        } else{
+            x = Math.ceil(Math.random()*89+10);
+            y = Math.ceil(Math.random()*89+10);
+        }
         answer = x * y;
         questionText.textContent = `${x} x ${y} = `;
     } else if(quizType == "division"){
-        x = Math.ceil(Math.random()*89+10);
-        y = Math.ceil(Math.random()*8+1);
+        // division question
+        if(quizDifficulty == "easy"){
+            x = Math.ceil(Math.random()*89+10);
+            y = Math.ceil(Math.random()*8+1);
+        } else if(quizDifficulty == "medium"){
+            x = Math.ceil(Math.random()*899+100);
+            y = Math.ceil(Math.random()*8+1);
+        } else{
+            x = Math.ceil(Math.random()*899+100);
+            y = Math.ceil(Math.random()*99+1);
+        }
         ans = x / y;
         answer = ans.toFixed(2)
         questionText.textContent = `${x} / ${y} = `;
@@ -136,5 +168,8 @@ function quizTime() {
 
 answerBtn.onclick = ansCheck;
 submitButton.onclick = scoreSubmit;
-multiplyButton.onclick = startQuiz;
-divisionButton.onclick = startQuiz
+multiplyButton.onclick = quizDifficultyPage;
+divisionButton.onclick = quizDifficultyPage;
+easyButton.onclick = startQuiz;
+mediumButton.onclick = startQuiz;
+hardButton.onclick = startQuiz
