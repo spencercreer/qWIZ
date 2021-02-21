@@ -13,8 +13,8 @@ The quiz ends when the timer runs out. The user may then enter their initials. W
 ## Table of Contents
 * [Links](#links)
 * [Animation](#animation) 
- * [Technologies](#technologies)  
- * [License](#license)
+* [Technologies](#technologies)  
+* [License](#license)
 * [Contact](#contact)
 
 ## Links

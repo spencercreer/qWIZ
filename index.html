@@ -24,8 +24,8 @@
             <p class="lead">Answer as many math questions as you can within the time limit. </p>
             <hr class="my-4">
             <p>Your timer will begin with seventy-five seconds. Incorrect answers will reduce your time by ten seconds!</p>
-            <button class="btn btn-danger btn-lg btn-block" id="multiplyBtn" value="multiply">Multiplication Quiz</button>
-            <button class="btn btn-danger btn-lg btn-block" id="divisionBtn" value="division">Division Quiz</button>
+            <button class="btn btn-danger btn-lg btn-block" id="multiplyBtn" value="Multiplication">Multiplication Quiz</button>
+            <button class="btn btn-danger btn-lg btn-block" id="divisionBtn" value="Division">Division Quiz</button>
         </div>
     </div>
 
@@ -36,9 +36,9 @@
           <p class="lead">Choose your quiz level of difficulty.</p>
           <hr class="my-4">
           <p>Your timer will begin with seventy-five seconds. Incorrect answers will reduce your time by ten seconds!</p>
-          <button class="btn btn-danger btn-lg btn-block" id="easyBtn" value="easy">Easy</button>
-          <button class="btn btn-danger btn-lg btn-block" id="mediumBtn" value="medium">Medium</button>
-          <button class="btn btn-danger btn-lg btn-block" id="hardBtn" value="hard">Hard</button>
+          <button class="btn btn-danger btn-lg btn-block" id="easyBtn" value="Easy">Easy</button>
+          <button class="btn btn-danger btn-lg btn-block" id="mediumBtn" value="Medium">Medium</button>
+          <button class="btn btn-danger btn-lg btn-block" id="hardBtn" value="Hard">Hard</button>
       </div>
     </div>
 
@@ -74,6 +74,31 @@
                 </div>
                 <input type="text" id="initials" placeholder="Enter your initials" aria-label="Example text with button addon" aria-describedby="button-addon1">
               </div>
+            </div>
+        </div>
+      </div>
+
+      <div id="highscoresPg" hidden>
+        <div class="jumbotron jumbotron-fluid pt-4 mb-0">
+            <div class="container">
+              <h1 class="display-4 text-center">Highscores</h1>
+              <h2 class="display-4 text-center highscoresTitle"></h2>
+              <p class="lead text-center">Try to see if you can top the scores list.</p>
+
+              <table class="table table-sm">
+                <thead>
+                  <tr>
+                    <th class="text-center" scope="col">Place</th>
+                    <th class="text-center" scope="col">Player</th>
+                    <th class="text-center" scope="col">Score</th>
+                  </tr>
+                </thead>
+                <tbody id="scoresList">
+                </tbody>
+              </table>
+
+              <!-- Clear Highscores buttons -->
+              <button class="btn btn-danger btn-lg btn-block" id="clearBtn" style = "margin-top: 50px" role="button">Clear Highscores</button>
             </div>
         </div>
       </div>
