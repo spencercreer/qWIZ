@@ -198,8 +198,8 @@ function quizTime() {
 
 // On Clear Highscores click, clear scores list
 function clearScores(){
-    localStorage.removeItem(quizPlayers);
-    localStorage.removeItem(quizScores);
+    localStorage.removeItem(quizDifficulty + quizType + "Players");
+    localStorage.removeItem(quizDifficulty + quizType + "Scores");
     location.reload();
 }
 
