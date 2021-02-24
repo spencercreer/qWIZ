@@ -88,8 +88,8 @@ function quizTime() {
             x = Math.ceil(Math.random()*8+1);
             y = Math.ceil(Math.random()*8+1);
         } else if(quizDifficulty == "Medium"){
-            x = Math.ceil(Math.random()*8);
-            y = Math.ceil(Math.random()*99);
+            x = Math.ceil(Math.random()*8+1);
+            y = Math.ceil(Math.random()*89+10);
         } else{
             x = Math.ceil(Math.random()*89+10);
             y = Math.ceil(Math.random()*89+10);
@@ -99,17 +99,19 @@ function quizTime() {
     } else if(quizType == "Division"){
         // division question
         if(quizDifficulty == "Easy"){
-            x = Math.ceil(Math.random()*89+10);
             y = Math.ceil(Math.random()*8+1);
+            x = Math.ceil(Math.random()*9+1)*y;
         } else if(quizDifficulty == "Medium"){
-            x = Math.ceil(Math.random()*899+100);
             y = Math.ceil(Math.random()*8+1);
+            x = Math.ceil(Math.random()*99+1)*y;
         } else{
-            x = Math.ceil(Math.random()*899+100);
-            y = Math.ceil(Math.random()*99+1);
+            y = Math.ceil(Math.random()*8+1);
+            x = Math.ceil(Math.random()*99+1);
         }
         ans = x / y;
-        answer = ans.toFixed(2)
+        console.log(ans);
+        answer = ans.toFixed(2);
+        console.log(answer);
         questionText.textContent = `${x} / ${y} = `;
     }
  }
@@ -174,6 +176,7 @@ function quizTime() {
         var player = storedPlayers[i];
         var score = storedScores[i];
 
+        // Create new row in highscores table
         var playerNewRow = document.createElement("tr");
         var positionEl = document.createElement("td");
         var playerInitialsEl = document.createElement("td");
@@ -181,18 +184,18 @@ function quizTime() {
         positionEl.className = "text-center";
         playerInitialsEl.className = "text-center";
         playerScoreEl.className = "text-center";
-        
+        // Add new row player and score content
         positionEl.innerHTML = i+1;
         playerInitialsEl.innerHTML = player;
         playerScoreEl.innerHTML = score;  
-       
+        // Append new row
         playerNewRow.append(positionEl,playerInitialsEl,playerScoreEl);
         scoresList.append(playerNewRow);
       }
-      quizTitleText.textContent = `${quizDifficulty} ${quizType} Quiz`;
-
-      initialsPage.hidden = true;
-      highscoresPage.hidden = false;
+    // Add quiz difficulty and type to title show highscores page
+    quizTitleText.textContent = `${quizDifficulty} ${quizType} Quiz`;
+    initialsPage.hidden = true;
+    highscoresPage.hidden = false;
 
 }
 
