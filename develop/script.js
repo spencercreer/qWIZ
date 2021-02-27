@@ -138,64 +138,70 @@ function quizTime() {
     var playerInitials = document.getElementById("initials").value;
     var playerScore = totScore;
 
-    // If local storage is empty, make empty arrays. Push player initials and player score to array.
-    if(!localStorage.getItem(quizPlayers)){
-        console.log("hit")
-        localStorage.setItem(quizPlayers,"[]");
-        storedPlayers = JSON.parse(localStorage.getItem(quizPlayers));
-        storedPlayers.push(playerInitials);
-
-        localStorage.setItem(quizScores,"[]");
-        storedScores = JSON.parse(localStorage.getItem(quizScores));
-        storedScores.push(playerScore);
-    } else{
-        console.log("ouch")
-        // Else get from local storage and insert in correct location.
-        storedPlayers = JSON.parse(localStorage.getItem(quizPlayers));
-        storedScores = JSON.parse(localStorage.getItem(quizScores));
-        var m = storedScores.length;
-        for(var index=0; index < m; index++){
-            oldScore = storedScores[index];
+    // If no initials were entered, prompt user to enter initials
+    if(playerInitials === ""){
+        confirm("Please enter your initials.")
+    } else {
+        // If local storage is empty, make empty arrays. Push player initials and player score to array.
+        if(!localStorage.getItem(quizPlayers)){
+            console.log("hit")
+            localStorage.setItem(quizPlayers,"[]");
+            storedPlayers = JSON.parse(localStorage.getItem(quizPlayers));
+            storedPlayers.push(playerInitials);
     
-            if(playerScore > oldScore){
-                storedPlayers.splice(index,0,playerInitials);
-                storedScores.splice(index,0,playerScore);
-                index = m;
+            localStorage.setItem(quizScores,"[]");
+            storedScores = JSON.parse(localStorage.getItem(quizScores));
+            storedScores.push(playerScore);
+        } else{
+            console.log("ouch")
+            // Else get from local storage and insert in correct location.
+            storedPlayers = JSON.parse(localStorage.getItem(quizPlayers));
+            storedScores = JSON.parse(localStorage.getItem(quizScores));
+            var m = storedScores.length;
+            for(var index=0; index < m; index++){
+                oldScore = storedScores[index];
+        
+                if(playerScore > oldScore){
+                    storedPlayers.splice(index,0,playerInitials);
+                    storedScores.splice(index,0,playerScore);
+                    index = m;
+                }
             }
         }
+        // Stringify storedPlayers and storedScores array
+        localStorage.setItem(quizPlayers,JSON.stringify(storedPlayers));
+        localStorage.setItem(quizScores,JSON.stringify(storedScores));
+        storedPlayers = JSON.parse(localStorage.getItem(quizPlayers));
+        storedScores = JSON.parse(localStorage.getItem(quizScores));
+    
+        scoresList.innerHTML = "";
+    
+        for (var i = 0; i < storedScores.length; i++) {
+            var player = storedPlayers[i];
+            var score = storedScores[i];
+    
+            // Create new row in highscores table
+            var playerNewRow = document.createElement("tr");
+            var positionEl = document.createElement("td");
+            var playerInitialsEl = document.createElement("td");
+            var playerScoreEl = document.createElement("td");
+            positionEl.className = "text-center";
+            playerInitialsEl.className = "text-center";
+            playerScoreEl.className = "text-center";
+            // Add new row player and score content
+            positionEl.innerHTML = i+1;
+            playerInitialsEl.innerHTML = player;
+            playerScoreEl.innerHTML = score;  
+            // Append new row
+            playerNewRow.append(positionEl,playerInitialsEl,playerScoreEl);
+            scoresList.append(playerNewRow);
+          }
+        // Add quiz difficulty and type to title show highscores page
+        quizTitleText.textContent = `${quizDifficulty} ${quizType} Quiz`;
+        initialsPage.hidden = true;
+        highscoresPage.hidden = false;
     }
-    // Stringify storedPlayers and storedScores array
-    localStorage.setItem(quizPlayers,JSON.stringify(storedPlayers));
-    localStorage.setItem(quizScores,JSON.stringify(storedScores));
-    storedPlayers = JSON.parse(localStorage.getItem(quizPlayers));
-    storedScores = JSON.parse(localStorage.getItem(quizScores));
 
-    scoresList.innerHTML = "";
-
-    for (var i = 0; i < storedScores.length; i++) {
-        var player = storedPlayers[i];
-        var score = storedScores[i];
-
-        // Create new row in highscores table
-        var playerNewRow = document.createElement("tr");
-        var positionEl = document.createElement("td");
-        var playerInitialsEl = document.createElement("td");
-        var playerScoreEl = document.createElement("td");
-        positionEl.className = "text-center";
-        playerInitialsEl.className = "text-center";
-        playerScoreEl.className = "text-center";
-        // Add new row player and score content
-        positionEl.innerHTML = i+1;
-        playerInitialsEl.innerHTML = player;
-        playerScoreEl.innerHTML = score;  
-        // Append new row
-        playerNewRow.append(positionEl,playerInitialsEl,playerScoreEl);
-        scoresList.append(playerNewRow);
-      }
-    // Add quiz difficulty and type to title show highscores page
-    quizTitleText.textContent = `${quizDifficulty} ${quizType} Quiz`;
-    initialsPage.hidden = true;
-    highscoresPage.hidden = false;
 
 }
 
