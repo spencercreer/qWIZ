@@ -46,14 +46,16 @@
     <div id="quiz" hidden>
         <div class="jumbotron jumbotron-fluid pt-2 mb-0">
             <div class="container">
-                <h1 class="display-4 text-center">Math Quiz</h1>
-                <p class="question lead"></p>
-                <!-- User intials submit button and input group -->
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <button class="btn btn-danger" type="button" id="answer-button">Submit</button>
+                <h1 class="display-4 text-center mb-5">Math Quiz</h1>
+                <div class="row">
+                  <p class="question lead text-right pr-0 col-4" style="font-size: 24px;"></p>
+                  <!-- User intials submit button and input group -->
+                  <div class="input-group mb-3 col-8">
+                    <input type="text" id="answer-input" value="" aria-label="Example text with button addon" aria-describedby="button-addon1" style="width: 40%;">
+                    <div class="input-group-append">
+                      <button class="btn btn-danger" type="button" id="answer-button">Submit</button>
+                    </div>
                   </div>
-                  <input type="text" id="answer-input" value="" aria-label="Example text with button addon" aria-describedby="button-addon1">
                 </div>
                 <p class="text-center" id="timer" style="font-size: 100px"><span class="fa fa-clock-o mr-2"></span><span class="time"> 75 </span></p>
             </div> 
@@ -84,7 +86,7 @@
             <div class="container">
               <h1 class="display-4 text-center">Highscores</h1>
               <h2 class="display-4 text-center highscoresTitle" style="font-size:35px"></h2>
-              <p class="lead text-center">Try to see if you can top the scores list.</p>
+              <p class="lead text-center" id="highscore-message">Try to see if you can top the scores list.</p>
 
               <table class="table table-sm">
                 <thead>

@@ -79,6 +79,7 @@ function quizTime() {
 // gets a question and prints it to screen
  function getQuestion(){
     document.getElementById("answer-input").focus();
+    document.getElementById("answer-input").classList.remove("alert-danger")
     answerBtn.className = "btn btn-danger";
     document.getElementById("answer-input").value = " ";
     if(quizType == "Multiplication"){
@@ -120,6 +121,7 @@ function quizTime() {
         scoreCounter.textContent = totScore;
         getQuestion();
     } else{
+        document.getElementById("answer-input").classList.add("alert-danger");
         scoreCounter.textContent = totScore;
         secondsLeft = secondsLeft - 10;
     }
@@ -196,8 +198,6 @@ function quizTime() {
         initialsPage.hidden = true;
         highscoresPage.hidden = false;
     }
-
-
 }
 
 // On Clear Highscores click, clear scores list
