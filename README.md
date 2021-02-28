@@ -24,7 +24,7 @@ Repository: [https://github.com/spencercreer/math_quiz](https://github.com/spenc
 
 ## Animation
 The following animation demonstrates the application functionality:
-![Math Quiz animation](./assets/)
+![Math Quiz animation](./assets/math_quiz.gif)
 
 ## Contribute
 Please submit a PR if you would like to contribute.
