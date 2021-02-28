@@ -45,7 +45,6 @@ function quizDifficultyPage(){
 // On Start Quiz button click, hide homePage and show quizPage
 function startQuiz(){
     quizDifficulty = this.value;
-    console.log(quizDifficulty)
     homePage.hidden = true;
     difficultyPage.hidden = true;
     quizPage.hidden = false;
@@ -109,9 +108,7 @@ function quizTime() {
             x = Math.ceil(Math.random()*99+1);
         }
         ans = x / y;
-        console.log(ans);
         answer = ans.toFixed(2);
-        console.log(answer);
         questionText.textContent = `${x} / ${y} = `;
     }
  }
@@ -144,7 +141,6 @@ function quizTime() {
     } else {
         // If local storage is empty, make empty arrays. Push player initials and player score to array.
         if(!localStorage.getItem(quizPlayers)){
-            console.log("hit")
             localStorage.setItem(quizPlayers,"[]");
             storedPlayers = JSON.parse(localStorage.getItem(quizPlayers));
             storedPlayers.push(playerInitials);
@@ -153,7 +149,6 @@ function quizTime() {
             storedScores = JSON.parse(localStorage.getItem(quizScores));
             storedScores.push(playerScore);
         } else{
-            console.log("ouch")
             // Else get from local storage and insert in correct location.
             storedPlayers = JSON.parse(localStorage.getItem(quizPlayers));
             storedScores = JSON.parse(localStorage.getItem(quizScores));
@@ -214,7 +209,19 @@ function clearScores(){
 
 clearButton.onclick = clearScores;
 answerBtn.onclick = ansCheck;
+// Answer input keypress 'Enter' ansCheck function
+document.getElementById("answer-input").addEventListener("keyup", function(event){
+    if(event.key == "Enter") {
+        ansCheck();
+    }
+});
 submitButton.onclick = scoreSubmit;
+// Initials input keypress 'Enter' scoreSubmit function
+document.getElementById("initials").addEventListener("keyup", function(event){
+    if(event.key == "Enter") {
+        scoreSubmit();
+    }
+});
 multiplyButton.onclick = quizDifficultyPage;
 divisionButton.onclick = quizDifficultyPage;
 easyButton.onclick = startQuiz;
