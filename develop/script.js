@@ -161,7 +161,10 @@ function quizTime() {
                 if(playerScore > oldScore){
                     storedPlayers.splice(index,0,playerInitials);
                     storedScores.splice(index,0,playerScore);
+                    document.getElementById("highscore-message").textContent = `Congratulations! You placed number ${index+1} on the highscores list. See if you can do even better.`
                     index = m;
+                } else {
+                    document.getElementById("highscore-message").textContent = "You did not make the highscores list. Try again to see if you can improve."
                 }
             }
         }
