@@ -13,7 +13,7 @@ var difficultyPage = document.getElementById("difficulty");
 var quizPage = document.getElementById("quiz");
 var initialsPage = document.getElementById("initialsPg");
 var highscoresPage = document.getElementById("highscoresPg");
-var quizTitleText = document.querySelector(".highscoresTitle")
+var quizTitleText = document.querySelector(".highscoresTitle");
 
 var timeEl = document.querySelector(".time");
 var secondsLeft = 75;
@@ -161,7 +161,7 @@ function quizTime() {
                 if(playerScore > oldScore){
                     storedPlayers.splice(index,0,playerInitials);
                     storedScores.splice(index,0,playerScore);
-                    document.getElementById("highscore-message").textContent = `Congratulations! You placed number ${index+1} on the highscores list. See if you can do even better.`
+                    document.getElementById("highscore-message").textContent = `Congratulations! You placed number ${index+1} on the highscores list. See if you can do even better.`;
                     index = m;
                 } else {
                     document.getElementById("highscore-message").textContent = "You did not make the highscores list. Try again to see if you can improve."
@@ -207,7 +207,6 @@ function quizTime() {
 function clearScores(){
     localStorage.removeItem(quizDifficulty + quizType + "Players");
     localStorage.removeItem(quizDifficulty + quizType + "Scores");
-    location.reload();
 }
 
 clearButton.onclick = clearScores;
