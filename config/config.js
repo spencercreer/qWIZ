@@ -23,4 +23,4 @@ if (process.env.JAWSDB_URL) {
     )
 }
 
-module.export = connection
+module.exports = connection
