@@ -13,6 +13,8 @@ The quiz ends when the timer runs out. The user may then enter their initials. W
 ## Table of Contents
 * [Links](#links)
 * [Animation](#animation) 
+* [Installation](#installation)
+* [Dependencies](#dependencies)
 * [Technologies](#technologies)  
 * [License](#license)
 * [Contact](#contact)
@@ -25,6 +27,37 @@ Repository: [https://github.com/spencercreer/math_quiz](https://github.com/spenc
 ## Animation
 The following animation demonstrates the application functionality:
 ![Math Quiz animation](./assets/math_quiz.gif)
+
+## Installation
+This application utilizes the following [dependencies](#dependencies).
+
+After cloning the repo, install the necessary dependencies by running the following command:
+
+  ```
+  npm install
+  ```
+This application is setup to use MySQL database management system. If you do not have MySQL installed, you may install it [here](https://dev.mysql.com/downloads/mysql/).
+Once you have MySQL installed, you will need to create a .env file with the following credentials:
+  ```
+  DB_NAME=math_quiz_db
+  DB_USER=<mysql user>
+  PASSWORD=<user password>
+  ```
+Set up the your local database by logging into MySQL in a terminal window and running the schema.sql file.
+  ```
+  mysql -u <user> -p <password>
+  SOURCE db/schema.sql
+  ```
+You may seed your MySQL database with test data by running:
+  ```
+  npm run seeds
+  ```
+Once your local database is setup, you may start the application by running:
+  ```
+  npm start
+  ```
+
+## Dependencies
 
 ## Contribute
 Please submit a PR if you would like to contribute.
