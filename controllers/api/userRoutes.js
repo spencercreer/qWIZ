@@ -1,5 +1,11 @@
 const router = require('express').Router()
 const { User } = require('../../models')
+const withAuth = require('../../utils/auth')
+
+router.get('/', withAuth, async (req, res) => {
+    console.log(req.session.loggedIn)
+    res.status(400).json({ message: 'Something went wrong' })
+})
 
 router.post('/', async (req, res) => {
     try {
@@ -9,11 +15,10 @@ router.post('/', async (req, res) => {
             return res.status(400).json({ message: 'There was an error creating the user' })
         }
 
-        req.session.save(() => {
-            req.session.userId = user.id
-            req.session.username = user.username
-            req.session.loggedIn = true
-        })
+        req.session.user = {
+            userId: user.id,
+            username: user.username,
+        }
 
         res.json(user)
     } catch (err) {
