@@ -20,9 +20,9 @@ The quiz ends when the timer runs out. The user may then enter their initials. W
 * [Contact](#contact)
 
 ## Links
-Published URL: [https://spencercreer.github.io/math_quiz/](https://spencercreer.github.io/math_quiz/)
+Published URL: [https://spencercreer.github.io/math_quiz/](https://spencercreer.github.io/qwiz/)
 
-Repository: [https://github.com/spencercreer/math_quiz](https://github.com/spencercreer/math_quiz)
+Repository: [https://github.com/spencercreer/math_quiz](https://github.com/spencercreer/qwiz)
 
 ## Animation
 The following animation demonstrates the application functionality:
