@@ -1,12 +1,42 @@
 import { Form, Button, Alert } from 'react-bootstrap';
+import { loginUser } from '../utils/API';
+
 const { Group, Label, Control } = Form
 const LoginForm = () => {
+
+    const handleFormSubmit = async (event) => {
+        event.preventDefault()
+        const form = event.currentTarget;
+        if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+
+        try {
+            // hardcoded userdata
+            const userFormData = {
+                email: 'test@getnada.com',
+                username: 'testUser',
+                password: 'test1234'
+            }
+            const response = await loginUser(userFormData)
+            console.log(response)
+            if (!response.ok) {
+                throw new Error('something went wrong!')
+            }
+        }
+        catch (err) {
+            console.error(err)
+            // setShowAlert(true);
+        }
+    }
+
     return (
         <>
             <Form
                 noValidate
-                // validated={validated}
-                // onSubmit={handleFormSubmit}
+            // validated={validated}
+            onSubmit={handleFormSubmit}
             >
                 <Alert
                     dismissible
