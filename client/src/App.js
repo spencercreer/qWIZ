@@ -1,6 +1,8 @@
 import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
 import Timer from './components/Timer';
+import Question from './components/Question';
+import Score from './components/Score';
 import logo from './logo.svg';
 import './App.css';
 
@@ -13,6 +15,8 @@ function App() {
         {/* <SignupForm />
         <LoginForm /> */}
         <Timer />
+        <Question />
+        <Score />
       </header>
     </div>
   );
