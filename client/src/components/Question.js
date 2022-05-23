@@ -1,15 +1,7 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 
 const Question = () => {
   const [question, setQuestion] = useState([Math.floor(Math.random() * 100), Math.floor(Math.random() * 100)])
-
-  // useEffect(()=> {
-
-  // }, [])
-
-  // const getQuestion = () => {
-  //   setQuestion([Math.floor(Math.random() * 100), Math.floor(Math.random() * 100)])
-  // }
 
   const handleOnChange = (event) => {
     const answer = parseInt(event.target.value)
