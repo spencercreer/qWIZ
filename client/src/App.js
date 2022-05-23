@@ -1,9 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
+import HomePage from './components/HomePage';
 import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
 import QuizPage from './components/QuizPage';
-
 import './App.css';
 
 function App() {
@@ -12,10 +12,10 @@ function App() {
       <>
         <Header />
         <Routes>
-          {/* <Route
+          <Route
             path='/'
             element={<HomePage />}
-          /> */}
+          />
           <Route
             path='/login'
             element={<LoginForm />}
@@ -27,6 +27,10 @@ function App() {
           <Route
             path='/quiz'
             element={<QuizPage />}
+          />
+           <Route 
+            path='*'
+            element={<h1 className='display-2'>Wrong page!</h1>}
           />
         </Routes>
       </>
