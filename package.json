@@ -4,6 +4,8 @@
   "description": "A MERN application for creating quizzes and flashcards",
   "scripts": {
     "start": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently \"cd server && npm run dev\" \"cd client && npm start\" \"cd client && npm run css:build\"",
+    "install": "cd server && npm i && cd ../client && npm i",
     "lint": "npx eslint .",
     "lint-fix": "npx eslint . --fix"
   },
@@ -21,6 +23,7 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.37.0",
     "@typescript-eslint/parser": "^5.37.0",
+    "concurrently": "^7.4.0",
     "eslint": "^8.23.1",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",
