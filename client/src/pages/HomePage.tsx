@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 function HomePage() {
     return (
@@ -6,10 +6,11 @@ function HomePage() {
             <h1 className="">Math Quiz</h1>
             <p className="">Answer as many math questions as you can within the time limit. </p>
             <p>Your timer will begin with seventy-five seconds. Incorrect answers will reduce your time by ten seconds!</p>
-            <button className="btn" id="multiply-btn" value="Multiplication">Multiplication
-                Quiz</button>
-            <button className="btn" id="division-btn" value="Division">Division Quiz</button>
-            <button className="btn" id="binary-btn" value="Binary">Binary Quiz</button>
+            <button type="button" className="btn" id="multiply-btn" value="Multiplication">
+                Multiplication
+            </button>
+            <button type="button" className="btn" id="division-btn" value="Division">Division</button>
+            <button type="button" className="btn" id="binary-btn" value="Binary">Binary</button>
         </div>
     );
 }
