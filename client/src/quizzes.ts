@@ -9,7 +9,8 @@ interface IQuizzes {
     subtraction: IQuiz,
     multiplication: IQuiz,
     division: IQuiz,
-    // computerScience: IQuiz,
+    computerScience: IQuiz,
+    // twoComp: IQuiz,
 }
 
 const quizzes: IQuizzes = {
@@ -53,12 +54,26 @@ const quizzes: IQuizzes = {
             return x / y === ans;
         }
     },
-    // computerScience: {
+    computerScience: {
+        getQuestion: () => {
+            const x = Math.ceil(Math.random() * 1000);
+            // I need to retype the return to make y optional
+            const y = 0;
+            return { x, y, text: x.toString(16)}
+        },
+        checkAnswer: (x: number, y: number, ans: number) => {
+            return ans === x;
+        }
+    },
+    // twoComp: {
     //     getQuestion: () => {
-
+    //         const x = Math.ceil(Math.random() * 10);
+    //         // I need to retype the return to make y optional
+    //         const y = 0;
+    //         return { x, y, text: x.toString(2)}
     //     },
-    //     checkAnswer: () => {
-
+    //     checkAnswer: (x: number, y: number, ans: number) => {
+    //         return ans === x;
     //     }
     // },
 

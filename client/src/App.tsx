@@ -4,9 +4,10 @@ import Nav from "./components/Nav";
 import HighscoresPage from "./pages/HighscoresPage";
 import HomePage from "./pages/HomePage";
 import QuizPage from "./pages/QuizPage";
+import { Quizzes } from "./types/types";
 
 function App() {
-  const [quiz, setQuiz] = useState<string>("");
+  const [quiz, setQuiz] = useState<Quizzes>(Quizzes.ADDITION);
 
   return (
     <div className="App">

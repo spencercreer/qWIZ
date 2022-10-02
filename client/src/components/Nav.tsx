@@ -1,16 +1,19 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Nav() {
   return (
     <header className="header">
-      <h1 className="h-6 w-auto hover:text-green-500 duration-200">qWIZ</h1>
+      <h1 className="logo">
+        <Link to="/">qWIZ</Link>
+      </h1>
       <nav className="nav font-semibold text-lg">
         <ul className="flex items-center">
           <li className="nav-link">
-            <p >Highscores</p>
+            <Link to="/highscores">Highscores</Link>
           </li>
           <li className="nav-link">
-            <p >Profile</p>
+            <Link to="/highscores">Profile</Link>
           </li>
         </ul>
       </nav>
