@@ -19,24 +19,26 @@ function QuizPage({ quiz }: IQuizPageProps) {
     }, []);
 
     return (
-        <div className="">
-            <div className="">
-                <p className="">{question.text}</p>
-                <div className="">
-                    <input type="number" className="input" ref={answerRef} />
-                    <button className="btn" type="button" onClick={() => {
-                        const answer = parseInt(answerRef.current.value, 10);
-                        if (quizzes[quiz].checkAnswer(question.x, question.y, answer)) {
-                            setQuestion(quizzes[quiz].getQuestion());
-                            answerRef.current.value = "";
-                        }
-                    }}>
-                        Submit
-                    </button>
+        <>
+            <div className="grid grid-cols-4 my-4">
+                <div className="col-start-2">
+                    <p className="px-2 float-right">{question.text}</p>
                 </div>
+                <input type="number" className="input" ref={answerRef} />
             </div>
-            <p className="">{time}</p>
-        </div>
+            <div className="flex justify-center my-4">
+                <button className="btn" type="button" onClick={() => {
+                    const answer = parseInt(answerRef.current.value, 10);
+                    if (quizzes[quiz].checkAnswer(question.x, question.y, answer)) {
+                        setQuestion(quizzes[quiz].getQuestion());
+                        answerRef.current.value = "";
+                    }
+                }}>
+                    Submit
+                </button>
+                <p className="">{time}</p>
+            </div>
+        </>
     );
 }
 
