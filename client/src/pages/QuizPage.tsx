@@ -11,9 +11,14 @@ function QuizPage({ quiz }: IQuizPageProps) {
     const answerRef = useRef<HTMLInputElement>(null!);
 
     useEffect(() => {
+        let x = 10;
         const timer = setInterval(() => {
-            console.log(time)
-            setTime(prevTime => prevTime -= 1);
+            if (x > 0) {
+                x -= 1;
+                setTime(x);
+            } else {
+                clearInterval(timer);
+            }
         }, 1000);
 
         return () => clearInterval(timer);
