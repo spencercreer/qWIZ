@@ -56,21 +56,21 @@ const quizzes: IQuizzes = {
     },
     computerScience: {
         getQuestion: () => {
-            const x = Math.ceil(Math.random() * 1000);
+            const x = Math.ceil(Math.random() * 100);
             // I need to retype the return to make y optional
             const y = 0;
-            return { x, y, text: x.toString(16)}
+            return { x, y, text: x.toString(2)}
         },
         checkAnswer: (x: number, y: number, ans: number) => {
             return ans === x;
         }
     },
-    // twoComp: {
+    // hexDec: {
     //     getQuestion: () => {
-    //         const x = Math.ceil(Math.random() * 10);
+    //         const x = Math.ceil(Math.random() * 1000);
     //         // I need to retype the return to make y optional
     //         const y = 0;
-    //         return { x, y, text: x.toString(2)}
+    //         return { x, y, text: x.toString(16)}
     //     },
     //     checkAnswer: (x: number, y: number, ans: number) => {
     //         return ans === x;
